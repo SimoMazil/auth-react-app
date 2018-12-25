@@ -1,5 +1,6 @@
 import React from 'react';
-import { Message } from 'semantic-ui-react'
+import PropTypes from 'prop-types';
+import { Message } from 'semantic-ui-react';
 
 const ErrorMessage = props => {
   return (
@@ -7,6 +8,10 @@ const ErrorMessage = props => {
       <Message.Header>{props.message}</Message.Header>
     </Message>
   )
+}
+
+ErrorMessage.propTypes = {
+  message: PropTypes.string
 }
 
 export default ErrorMessage;
