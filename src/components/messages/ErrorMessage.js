@@ -6,6 +6,9 @@ const ErrorMessage = props => {
   return (
     <Message negative>
       <Message.Header>{props.message}</Message.Header>
+      {
+        props.subMessage && <p>{props.subMessage}</p>
+      }
     </Message>
   )
 }
