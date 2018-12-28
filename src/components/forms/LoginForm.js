@@ -23,7 +23,13 @@ class LoginForm extends Component {
     const errors = this.Validator(this.state.data)
     this.setState({errors})
     if(Object.keys(errors).length === 0) {
-      this.props.submit(this.state.data)
+      this.setState({
+        loading: true
+      })
+      this.props.submit(this.state.data).catch(err => this.setState({
+        errors: err.response.data.errors,
+        loading: false
+      }))
     }
   }
 
@@ -35,10 +41,11 @@ class LoginForm extends Component {
   }
 
   render() {
-    const { data, errors } = this.state;
+    const { data, errors, loading } = this.state;
 
     return (
-      <Form onSubmit={this.onSubmit}>
+      <Form onSubmit={this.onSubmit} loading={loading}>
+        {errors.global  && <ErrorMessage message="Something went wrong" subMessage={errors.global}/>}
         <Form.Field error={!!errors.email}>
           <label htmlFor='email'>Email</label>
           <input
