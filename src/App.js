@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import PropsTypes from 'prop-types';
 
 import Home from './components/pages/Home';
+import Confirmation from './components/pages/confirmation';
 import Login from './components/pages/Login';
 import Signup from './components/pages/Signup';
 import Dashboard from './components/pages/Dashboard';
@@ -16,6 +17,7 @@ class App extends Component {
       <div className="ui container">
         <Switch>
           <Route location={location} path="/" component={Home} exact />
+          <Route location={location} path="/confirmation/:token" component={Confirmation} exact />
           <GuestRoute location={location} path="/login" component={Login} />
           <GuestRoute location={location} path="/signup" component={Signup} />
           <UserRoute location={location} path="/dashboard" component={Dashboard} />
