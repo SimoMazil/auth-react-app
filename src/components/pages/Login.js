@@ -8,16 +8,16 @@ import { login } from '../../actions/auth';
 
 class Login extends Component {
 
-  submit = data => this.props.login(data).then(() => this.props.history.push("/dashboard"))
+  submit = data => this.props.login(data).then(() => this.props.history.push('/dashboard'))
 
   render() {
     return (
-      <div>
-        <h3>Login</h3>
+      <div style={{margin: '100px auto', width: '500px'}}>
+        <h3 style={{textAlign: 'center',}}>Login</h3>
 
         <LoginForm submit={this.submit}/>
 
-        <Link to="/forgetPassword">Forget Password</Link>
+        <Link to='/forgetPassword'>Forget Password</Link>
       </div>
     )
   }
