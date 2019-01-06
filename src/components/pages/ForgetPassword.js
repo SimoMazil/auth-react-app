@@ -17,7 +17,8 @@ class ForgetPassword extends Component {
   render() {
     const  {success} = this.state
     return (
-      <div>
+      <div style={{margin: '100px auto', width: '500px'}}>
+        <h3 style={{textAlign: 'center'}}>Forget Password</h3>
         {success ? <Message>Email has been sent.</Message> : <ForgetPasswordForm submit={this.submit}/>}
       </div>
     )

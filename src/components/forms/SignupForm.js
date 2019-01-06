@@ -69,7 +69,7 @@ class Signup extends Component {
           />
           {!errors.email && errors.password  && <ErrorMessage message={errors.password}/>}
         </Form.Field>
-        <Button primary>Login</Button>
+        <Button primary floated='right'>Signup</Button>
       </Form>
     )
   }

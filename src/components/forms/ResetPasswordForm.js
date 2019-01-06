@@ -70,7 +70,7 @@ class ResetPasswordForm extends Component {
           />
           {errors.passwordConfirmation  && <ErrorMessage message={errors.passwordConfirmation}/>}
         </Form.Field>
-        <Button primary>Forget Password</Button>
+        <Button primary floated='right'>Forget Password</Button>
       </Form>
     )
   }

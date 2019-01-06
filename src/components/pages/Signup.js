@@ -11,8 +11,8 @@ class Signup extends Component {
 
   render() {
     return (
-      <div>
-        <h3>Signup</h3>
+      <div style={{margin: '100px auto', width: '500px'}}>
+        <h3 style={{textAlign: 'center'}}>Signup</h3>
 
         <SignupForm submit={this.submit}/>
       </div>

@@ -24,7 +24,8 @@ class ResetPassword extends Component {
     const {loading, success} = this.state
     const token = this.props.match.params.token
     return (
-      <div>
+      <div style={{margin: '100px auto', width: '500px'}}>
+        <h3 style={{textAlign: 'center'}}>Reset Password</h3>
         {loading && !success && <Message>Loading...</Message>}
         {!loading && success && <Message><ResetPasswordForm submit={this.submit} token={token} /></Message>}
         {!loading && !success && <Message>Invalide Token</Message>}

@@ -13,7 +13,7 @@ class Login extends Component {
   render() {
     return (
       <div style={{margin: '100px auto', width: '500px'}}>
-        <h3 style={{textAlign: 'center',}}>Login</h3>
+        <h3 style={{textAlign: 'center'}}>Login</h3>
 
         <LoginForm submit={this.submit}/>
 
