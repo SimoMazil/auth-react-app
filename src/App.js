@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import PropsTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import Home from './components/pages/Home';
 import Confirmation from './components/pages/Confirmation';
@@ -11,13 +12,15 @@ import ResetPassword from './components/pages/ResetPassword';
 import Dashboard from './components/pages/Dashboard';
 import UserRoute from './components/routes/UserRoute';
 import GuestRoute from './components/routes/GuestRoute';
+import TopNavigation from './components/navigation/TopNavigation';
 
 class App extends Component {
   render() {
-    const location = this.props.location
+    const {location, isAuth} = this.props
     return (
       <div className="ui container">
         <Switch>
+          {isAuth && <TopNavigation />}
           <Route location={location} path="/" component={Home} exact />
           <Route location={location} path="/confirmation/:token" component={Confirmation} exact />
           <GuestRoute location={location} path="/login" component={Login} />
@@ -34,7 +37,14 @@ class App extends Component {
 App.propTypes = {
   location: PropsTypes.shape({
     pathname: PropsTypes.string.isRequired
-  }).isRequired
+  }).isRequired,
+  isAuth: PropsTypes.bool.isRequired
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    isAuth: !!state.user.email
+  }
+}
+
+export default connect(mapStateToProps)(App);
