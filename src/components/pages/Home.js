@@ -8,8 +8,7 @@ const Home = ({ isAuth, logout }) => (
   <div>
     <h3>Home</h3>
 
-    { isAuth ? 
-    <button onClick={() => logout()}>Logout</button> : 
+    { isAuth ? "" : 
     <p><Link to="/login">Login</Link> or <Link to="/signup">Signup</Link></p> }
   </div>
 )
