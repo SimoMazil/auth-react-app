@@ -1,13 +1,15 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import {Form, Dropdown} from 'semantic-ui-react';
+import ErrorMessage from '../messages/ErrorMessage';
 
 class SearchBookForm extends Component {
   state = {
     loading: false,
     query: '',
     options: [],
-    books:{}
+    books:{},
+    errors: {}
   }
 
   onSearchChange = (e, data) => {
@@ -38,12 +40,16 @@ class SearchBookForm extends Component {
         })
       })
       this.setState({loading: false, options, books: booksHash})
-    })
+    }).catch(err => this.setState({
+      errors: err.response.data.errors,
+      loading: false
+    }))
   }
 
   render() { 
     return (
       <Form loading={this.state.loading}>
+        {this.state.errors.global  && <ErrorMessage message="Something went wrong" subMessage={this.state.errors.global}/>}
         <Dropdown
           search
           fluid
