@@ -15,6 +15,8 @@ import App from './App';
 import rootReducer from './RootReducer'
 import { userLoggedIn } from './actions/auth'
 
+import setAutorizationHeader from './utils/setAuthorizationHeader'
+
 import * as serviceWorker from './serviceWorker';
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
@@ -22,6 +24,7 @@ const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk
 if(localStorage.authToken) {
   const payload = decode(localStorage.authToken)
   const user = {token: localStorage.authToken, email: payload.email, confirmed: payload.confirmed}
+  setAutorizationHeader(localStorage.authToken)
   store.dispatch(userLoggedIn(user))
 }
 
