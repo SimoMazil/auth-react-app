@@ -43,7 +43,7 @@ class SearchBookForm extends Component {
 
   render() { 
     return (
-      <Form>
+      <Form loading={this.state.loading}>
         <Dropdown
           search
           fluid

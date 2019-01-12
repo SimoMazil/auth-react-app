@@ -113,7 +113,7 @@ class BookForm extends Component {
               </Grid.Column>
               <Grid.Column>
                 <div style={{textAlign: 'center'}}>
-                  <Image size='medium' src={data.cover} centered/>
+                  <Image size='small' src={data.cover} centered/>
                   <br/>
                   {covers.length > 1 && (
                     <Button loading={this.state.loadingCover} basic onClick={this.changeCover}>Change Cover</Button>
