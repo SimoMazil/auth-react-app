@@ -4,7 +4,7 @@ import { Segment, Grid, Image, Form, Button } from 'semantic-ui-react';
 class BookForm extends Component {
   state = {
     data: {
-      goodreadIs: this.props.book.goodreadIs,
+      goodreadsId: this.props.book.goodreadsId,
       title: this.props.book.title,
       authors: this.props.book.authors,
       pages: this.props.book.pages,
@@ -20,7 +20,7 @@ class BookForm extends Component {
   componentWillReceiveProps(props) {
     this.setState({
       data: {
-        goodreadIs: props.book.goodreadIs,
+        goodreadsId: props.book.goodreadsId,
         title: props.book.title,
         authors: props.book.authors,
         pages: props.book.pages,

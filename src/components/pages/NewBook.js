@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import {connect} from 'react-redux'
 import { Segment } from 'semantic-ui-react';
 import SearchBookForm from '../forms/SearchBookForm';
 import BookForm from '../forms/BookForm';
+import {createBook} from '../../actions/books'
 
 class NewBook extends Component {
   state = {
@@ -16,7 +18,7 @@ class NewBook extends Component {
     .then(pages => this.setState({book: {...book, pages}}))
   }
 
-  addBook = () => console.log("Add Book!")
+  addBook = book => this.props.createBook(book).then(() => this.props.history.push('/dashboard'))
 
   render() { 
     return (
@@ -30,4 +32,4 @@ class NewBook extends Component {
   }
 }
  
-export default NewBook;
+export default connect(null, {createBook})(NewBook);

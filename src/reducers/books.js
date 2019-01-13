@@ -1,7 +1,14 @@
 import {createSelector} from 'reselect'
+import { BOOKS_FETCHED, BOOKS_CREATED } from '../types';
 
 const books = (state = {}, action = {}) => {
-  return state;
+  switch(action.type) {
+    case BOOKS_FETCHED:
+    case BOOKS_CREATED:
+      return {...state, ...action.data.entities.books};
+    default:
+      return state;
+  }
 }  
 
 export default books;
